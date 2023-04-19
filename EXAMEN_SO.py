@@ -1,13 +1,38 @@
+
+
+#Datos que se usaran para las particiones  
+def datos():
+     memoriaT = 2048
+     memoriaB = 640
+     memoriaSO = 384
+     memoriaApps = 1024
+
 def pEstatica():
-    while True:
+
+    print("--------------------------------------")
+    print("\n\tPartición estática")
+    particion = int(input("ingrese el númeor de partiones que requiere\n\n"))
+    
+    if particion <=10: {
+        print("jasas")        
+    }
+    else: 
+         print("Solicita más de las particiones permitidas")
+    
+    
+    
+    
+    
+    
+    
+    """while True:
         noParticiones = int(input ('Ingrese el número de particiones que desea tener, no mayor a 10'))
         if (noParticiones <=10):
             print('vfgt')
     else:
          print ('Está solicitando más de las particioenes que se peuden hacer')
-        
-	# datos = []:
-	# while particiones = num:
+       """ 
+
 		
 
 def pDinamica():
@@ -19,45 +44,43 @@ def pPaginacion():
 def pSegmentacion():
 	print('segmentacion')
         
-
-def menu():
+# Definir menu
+def main(pEstatica):
     while True:
-        print("\n\t\t\t------Huitzilix-------\n")
-        print("Zurita León Dana Cecilia\n\n\n")
-        print("Caracteristicas de dispositivo\n\n")
-        print("Memoria 2048 MB")
-        print("Memoria base 640 KB")
-        print("Sistema operativo 384 KB")
-        print("Mmeoria para aplicaciones 1024 KB")
-        print("¿Qué gestion de memoria le gustaria implementar?: ")
-        print("1. Particionamiento estatico")
-        print("2. Particionamiento Dinamico")
-        print("3. Particionamiento por pagianción")
-        print("4. Particionamiento por segmentación")
-        print("5. Salir")
-        print
+        print("\n\n\n\t\t------  Huitzilix  -------\n")
+        print("\tZurita León Dana Cecilia\n\n")
+        print("\tCaracteristicas de dispositivo\n")
+        print("\tMemoria 2048 MB")
+        print("\tMemoria base 640 KB")
+        print("\tSistema operativo 384 KB")
+        print("\tMmeoria para aplicaciones 1024 KB\n\n")
+        
+        print("\t\t¿Qué gestión de memória le gustaría implementar?: \n")
+        
+        print("\t1. Particionamiento estatico")
+        print("\t2. Particionamiento Dinamico")
+        print("\t3. Particionamiento por pagianción")
+        print("\t4. Particionamiento por segmentación")
+        print("\t5. Salir\n")
 
-        opcion = input("Ingrese su opción: ")
-
+        opcion = input("\nIngrese su opción: \n")
         if opcion == "1":
+            print("h")
             pEstatica()
-            
-            pass
-        elif opcion == "2":
-            pDinamica()
-            
-            pass
-        elif opcion == "3":
-            pPaginacion()
-            
-            pass
-        elif opcion == "4":
-            pSegmentacion()
-            pass
-        elif opcion == "5":
-            break
-            print("¡Hasta luego!")
-        else:
-            print("Opción inválida")
 
-menu()
+        elif opcion == "2":
+            print("2")
+            # pDinamica()
+        elif opcion == "3":
+            print("3")
+            # paginacion()
+        elif opcion == "4":
+            print("4")
+            # segmentacion()
+        elif opcion == "5":
+            print("Salio del programa\n")
+            break
+        else:
+            print("\nOpción invalida")
+
+main(pEstatica)
