@@ -1,5 +1,6 @@
 
 
+
 #Datos que se usaran para las particiones  
 def datos():
      memoriaT = 2048
