@@ -1,6 +1,3 @@
-
-
-
 #Datos que se usaran para las particiones  
 def datos():
      memoriaT = 2048
@@ -12,29 +9,34 @@ def pEstatica():
 
     print("--------------------------------------")
     print("\n\tPartición estática")
-    particion = int(input("ingrese el númeor de partiones que requiere\n\n"))
+    particion = int(input("\tIngrese el número de partiones que requiere\n\n"))
+    memoriaApps =1024
+    a = 0 
+
+    if (particion <=10):
+        for i in range(0,particion-1):
+            print("\tPartición ", i +1)
+            valPart = int(input("\tTamaño: ")) 
+            if (valPart<=memoriaApps):
+                a = a + valPart
+                print("aoaoaao: ", a)        
+                print("La suma es ", a)
+                
+            else:
+                print("El tamaño de la particion es mayo al de la memoria")
+                break
+            
     
-    if particion <=10: {
-        print("jasas")        
-    }
     else: 
          print("Solicita más de las particiones permitidas")
-    
-    
-    
-    
-    
-    
-    
-    """while True:
-        noParticiones = int(input ('Ingrese el número de particiones que desea tener, no mayor a 10'))
-        if (noParticiones <=10):
-            print('vfgt')
-    else:
-         print ('Está solicitando más de las particioenes que se peuden hacer')
-       """ 
 
-		
+    
+
+
+
+
+
+
 
 def pDinamica():
 	print('dinamico')
@@ -66,7 +68,6 @@ def main(pEstatica):
 
         opcion = input("\nIngrese su opción: \n")
         if opcion == "1":
-            print("h")
             pEstatica()
 
         elif opcion == "2":
