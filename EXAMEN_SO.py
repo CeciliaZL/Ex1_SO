@@ -24,9 +24,7 @@ def pEstatica():
     o = 0
 #--------------------------------  No tiene que salir particion final si se sale en el if pasado  ---------------------------------
     if (particion <=10):
-
-        #---------------Validacion para que la ultima de cero o si ya tiene los 1024 no deje
-
+#---------------------Validacion para que la ultima de cero o si ya tiene los 1024 no deje
         for i in range(0,particion-1):
             print("\n\tPartición ", i +1)
             valPart = int(input("\tTamaño: ")) 
@@ -36,65 +34,106 @@ def pEstatica():
             else:
                 print("El tamaño de la particion es mayor al de la memoria")
                 break
-        if (a <= memoriaApps):    
-            b = memoriaApps - a
-            print("\n\tPartición ", particion)  
-            print ("\tTamaño: ", b)
-            vPart= np.append(valores, b)
-            vPart.sort()
-            print("El valor de x es ",vPart)
-            
-            for j in range (0, particion ):
-                print("\n\tProceso ", j + 1 )
-                proceso = int(input("\tTamaño: "))
-                vProceso.append(proceso)
-                vProceso.sort()
-            print("Ordenado ", vProceso)
+        if (valPart<=memoriaApps):
+            if (a <= memoriaApps):    
+                b = memoriaApps - a
+                print("\n\tPartición ", particion)  
+                print ("\tTamaño: ", b)
+                vPart= np.append(valores, b)
+                vPart.sort()
+                print("El valor de x es ",vPart)
+                # eliminar el ultimo y marcar error si no cabe y no dejar que pase
+                for j in range (0, particion ):
+                    print("\n\tProceso ", j + 1 )
+                    proceso = int(input("\tTamaño: "))
+                    vProceso.append(proceso)
+                    vProceso.sort()
+                    
+                print("Ordenado ", vProceso)
 
-            for l in range (0, particion):
-                if (vProceso[l]<=vPart[l]):
-                    print("El proceso de ", vProceso[l], "kb se ha asignado a la partición de", vPart[l], "kb")     
-                else:
-                    print("El proceso de ", vProceso[l], " KB no se pudo asignar a ninguna partición ")
-        else:
-            print("no se puede ingresar esa partición")
+                for l in range (0, particion):
+                    if (vProceso[l]<=vPart[l]):
+                        print("\n\tEl proceso de ", vProceso[l], "KB se ha asignado a la partición de", vPart[l], "KB")     
+                    else:
+                        print("\n\tEl proceso de ", vProceso[l], " KB no se pudo asignar a ninguna partición ")
+            else:
+                print("\n\tMemoria insufucuente")
+                #valPart=0
+                #b = 0
+
         
     else: 
-        print("Solicita más de las particiones permitidas")
+        print("\n\tSolicita más de las particiones permitidas")
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def pDinamica():
-    memoriaApps =1024
-    tamDin = []
-    restaT = 0
+    memoriaT =2048
+    rest = 0
     print("--------------------------------------")
     print("\n\tPartición Dinámica")
 
+#------------------------------------FALIDAR QUE CUANDO SEA INSUFICIENTE SE SALGA --------------
+    while True:
+        procesoD = int(input("\tIngrese el tamaño del proceso: "))
+        memoriaT = memoriaT - procesoD
+        if (memoriaT >= 0):
+            print ("\n\tTiene ", memoriaT, " KB de memoria disponible.")
 
-    procesoD = int(input("\tIngrese el tamaño del proceso\n\n"))
-    tamDin.append(procesoD)
-    
-    if (procesoD <= memoriaApps):
-        memoriaApps -= procesoD                
-    else:
-        print("Excedes el tamaño de la memoria disponible")
-        
-            
-            
-
-
-    
-         
-
-
+        else: 
+            print("\n\tMemoria insuficiente ")  
+            break        
 
 def pPaginacion():
-	print('paginacion')
+    
+    print("--------------------------------------")
+    print("\n\tPaginación")
+    memoriaT = 1024
+    resta = 0
+    div1= []
+    restas = []
+    division =[]
+
+    print("Puede dividir la memoria con 2KB, 4KB u 8KB")
+    paginar  = int(input("Ingrese el número de particiones: "))
+
+    if (paginar == 2) or (paginar == 4) or (paginar == 8):
+        for i in range (0, memoriaT<=0): 
+            div =  memoriaT // paginar
+            division.append(div)
+            print ("La capacidad por segmento es de: ", div, "KB")
+            pros  = int(input("Tamaño del proceso: ")) 
+            div2 = pros // paginar
+            div1.append(div2)
+            print("DIVISION 1 ", div1)
+
+
+            resta =  div - div2
+            restas.append(resta)
+            print (" RESTA 1 ", restas)
+
+            for i in range (0, resta >=0):
+                pros  = int(input("Tamaño del proceso: ")) 
+                div2 = pros // paginar
+                div1.append(div2)
+                print ("HOLA   ", div1)
+                resta =  div - div2
+                restas.append(resta)
+                print ("Resta es ", restas)
+        
+
 
 def pSegmentacion():
 	print('segmentacion')
+        
+
+
+
+
+
+
+
         
 # Definir menu
 def main(pEstatica):
@@ -121,9 +160,10 @@ def main(pEstatica):
 
         elif opcion == "2":
             pDinamica()
+            
         elif opcion == "3":
-            print("3")
-            # paginacion()
+            pPaginacion()
+
         elif opcion == "4":
             print("4")
             # segmentacion()
