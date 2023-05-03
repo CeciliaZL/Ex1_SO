@@ -22,9 +22,7 @@ def pEstatica():
     a = 0 
     b = []
     o = 0
-#--------------------------------  No tiene que salir particion final si se sale en el if pasado  ---------------------------------
     if (particion <=10):
-#---------------------Validacion para que la ultima de cero o si ya tiene los 1024 no deje
         for i in range(0,particion-1):
             print("\n\tPartición ", i +1)
             valPart = int(input("\tTamaño: ")) 
@@ -42,26 +40,24 @@ def pEstatica():
                 vPart= np.append(valores, b)
                 vPart.sort()
                 print("El valor de x es ",vPart)
-                # eliminar el ultimo y marcar error si no cabe y no dejar que pase
                 for j in range (0, particion ):
                     print("\n\tProceso ", j + 1 )
                     proceso = int(input("\tTamaño: "))
                     vProceso.append(proceso)
-                    vProceso.sort()
-                    
-                print("Ordenado ", vProceso)
-
-                for l in range (0, particion):
-                    if (vProceso[l]<=vPart[l]):
-                        print("\n\tEl proceso de ", vProceso[l], "KB se ha asignado a la partición de", vPart[l], "KB")     
+                    if (vProceso[j] <= vPart[j]):
+                        print ("SALUDOS ", vProceso)
+                        vProceso.sort()
                     else:
-                        print("\n\tEl proceso de ", vProceso[l], " KB no se pudo asignar a ninguna partición ")
+                        print("ERROR")
+                        break
+                for l in range (0, particion):
+                    if (vProceso[j]<=vPart[j]):
+                        print("\n\tEl proceso de ", vProceso[l], "KB se ha asignado a la partición de", vPart[l], "KB")     
+                if (vProceso[j]>vPart[j]):
+                        print("\n\tEl proceso de ", vProceso[j], " KB no se pudo asignar a ninguna partición ")
+                print("Ordenado ", vProceso) 
             else:
-                print("\n\tMemoria insufucuente")
-                #valPart=0
-                #b = 0
-
-        
+                print("\n\tMemoria insufucuente")        
     else: 
         print("\n\tSolicita más de las particiones permitidas")
 
