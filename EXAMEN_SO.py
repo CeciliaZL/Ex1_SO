@@ -11,17 +11,19 @@ def datos():
 
 def pEstatica():
 
+    memoriaApps =1024
+    a = 0 
+    b = []
     valores = []
     vProceso = []
+
+
     print("--------------------------------------")
     print("\n\tPartición estática\n")
 
     print("\tLa cantidad maxima de particiones son 10")
     particion = int(input("\tIngrese el número de partiones que requiere: "))
-    memoriaApps =1024
-    a = 0 
-    b = []
-    o = 0
+    
     if (particion <=10):
         for i in range(0,particion-1):
             print("\n\tPartición ", i +1)
@@ -61,8 +63,7 @@ def pEstatica():
     else: 
         print("\n\tSolicita más de las particiones permitidas")
 
-
-#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------
 
 def pDinamica():
     memoriaT =2048
@@ -70,19 +71,19 @@ def pDinamica():
     print("--------------------------------------")
     print("\n\tPartición Dinámica")
 
-#------------------------------------FALIDAR QUE CUANDO SEA INSUFICIENTE SE SALGA --------------
     while True:
         procesoD = int(input("\tIngrese el tamaño del proceso: "))
         memoriaT = memoriaT - procesoD
         if (memoriaT >= 0):
             print ("\n\tTiene ", memoriaT, " KB de memoria disponible.")
-
         else: 
             print("\n\tMemoria insuficiente ")  
             break        
 
 def pPaginacion():
     
+    print("--------------------------------------")
+    print("\n\tPaginación")
     print("--------------------------------------")
     print("\n\tPaginación")
     memoriaT = 1024
@@ -92,33 +93,21 @@ def pPaginacion():
     division =[]
 
     print("Puede dividir la memoria con 2KB, 4KB u 8KB")
-    paginar  = int(input("Ingrese el número de particiones: "))
+    paginar  = int(input("Ingrese el tamaño del marco: "))
 
     if (paginar == 2) or (paginar == 4) or (paginar == 8):
-        for i in range (0, memoriaT<=0): 
-            div =  memoriaT // paginar
-            division.append(div)
-            print ("La capacidad por segmento es de: ", div, "KB")
+        div =  memoriaT // paginar
+        
+        while True: 
+  
+            print ("Marcos disponibles: ", div, "KB")
             pros  = int(input("Tamaño del proceso: ")) 
             div2 = pros // paginar
-            div1.append(div2)
-            print("DIVISION 1 ", div1)
-
-
-            resta =  div - div2
-            restas.append(resta)
-            print (" RESTA 1 ", restas)
-
-            for i in range (0, resta >=0):
-                pros  = int(input("Tamaño del proceso: ")) 
-                div2 = pros // paginar
-                div1.append(div2)
-                print ("HOLA   ", div1)
-                resta =  div - div2
-                restas.append(resta)
-                print ("Resta es ", restas)
-        
-
+            div -= div2
+            if(div<=0):
+                print("Memoria insuficiente")
+                break
+           
 
 def pSegmentacion():
 	print('segmentacion')
