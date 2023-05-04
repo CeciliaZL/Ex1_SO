@@ -57,13 +57,12 @@ def pEstatica():
                         print("\n\tEl proceso de ", vProceso[l], "KB se ha asignado a la partición de", vPart[l], "KB")     
                 if (vProceso[j]>vPart[j]):
                         print("\n\tEl proceso de ", vProceso[j], " KB no se pudo asignar a ninguna partición ")
-                print("Ordenado ", vProceso) 
+                #print("Ordenado ", vProceso) 
             else:
                 print("\n\tMemoria insufucuente")        
     else: 
         print("\n\tSolicita más de las particiones permitidas")
 
-#------------------------------------------------
 
 def pDinamica():
     memoriaT =2048
@@ -72,7 +71,7 @@ def pDinamica():
     print("\n\tPartición Dinámica")
 
     while True:
-        procesoD = int(input("\tIngrese el tamaño del proceso: "))
+        procesoD = int(input("\n\tIngrese el tamaño del proceso: "))
         memoriaT = memoriaT - procesoD
         if (memoriaT >= 0):
             print ("\n\tTiene ", memoriaT, " KB de memoria disponible.")
@@ -84,41 +83,53 @@ def pPaginacion():
     
     print("--------------------------------------")
     print("\n\tPaginación")
-    print("--------------------------------------")
-    print("\n\tPaginación")
     memoriaT = 1024
     resta = 0
     div1= []
     restas = []
     division =[]
 
-    print("Puede dividir la memoria con 2KB, 4KB u 8KB")
-    paginar  = int(input("Ingrese el tamaño del marco: "))
+    print("\tPuede dividir la memoria con 2KB, 4KB u 8KB")
+    paginar  = int(input("\tIngrese el tamaño del marco: "))
 
     if (paginar == 2) or (paginar == 4) or (paginar == 8):
         div =  memoriaT // paginar
         
         while True: 
   
-            print ("Marcos disponibles: ", div, "KB")
-            pros  = int(input("Tamaño del proceso: ")) 
+            print ("\n\tMarcos disponibles: ", div, "KB")
+            pros  = int(input("\tTamaño del proceso: ")) 
             div2 = pros // paginar
             div -= div2
             if(div<=0):
-                print("Memoria insuficiente")
+                print("\n\tMemoria insuficiente")
                 break
            
 
 def pSegmentacion():
-	print('segmentacion')
+    print('\n\tSegmentacion')
+    memoriaT = 2048
+    rest = 0
+    print("--------------------------------------")
+    print("\n\tPartición Dinámica")
+
+    while True:
+        procesoD = int(input("\n\tIngrese el tamaño del proceso: "))
+        memoriaT = memoriaT - procesoD
+        if (memoriaT >= 0):
+            sc = procesoD * 0.1
+            sd = procesoD * 0.5
+            sp = procesoD * 0.4
+            suma = sc + sd + sp
+            print ("\n\tSegmentación Código: ", sc)
+            print ("\n\tSegmentación Datos: ", sd)
+            print ("\n\tSegmentación Pila: ", sp)
+            print ("\n\tTotal de segmetación ", suma)
+            print ("\n\tTiene ", memoriaT, " KB de memoria disponible.")
+        else: 
+            print("\n\tMemoria insuficiente ")  
+            break  
         
-
-
-
-
-
-
-
         
 # Definir menu
 def main(pEstatica):
@@ -139,7 +150,7 @@ def main(pEstatica):
         print("\t4. Particionamiento por segmentación")
         print("\t5. Salir\n")
 
-        opcion = input("\nIngrese su opción: \n")
+        opcion = input("\n\tIngrese su opción: \n")
         if opcion == "1":
             pEstatica()
 
@@ -150,12 +161,13 @@ def main(pEstatica):
             pPaginacion()
 
         elif opcion == "4":
-            print("4")
-            # segmentacion()
+            pSegmentacion()
+
         elif opcion == "5":
-            print("Salio del programa\n")
+            print ("-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- ")
+            print("\n\tSalio del programa\n")
             break
         else:
-            print("\nOpción invalida")
+            print("\n\tOpción invalida")
 
 main(pEstatica)
